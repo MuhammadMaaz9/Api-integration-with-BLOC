@@ -21,9 +21,9 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       // } else {
       //   print('Response from Bloc : ${response}');
       emit(ApiLoaded(response!));
-      if (response != null) {
-        emit(ApiError(response.toString()));
-      }
+      // if (response != null) {
+      //   emit(ApiError(response.toString()));
+      // }
     });
   }
 }

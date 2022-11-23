@@ -24,14 +24,11 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<ApiBloc, ApiState>(
+        bloc: api,
         builder: (context, state) {
-          // if (state is ApiInitial) {
-          //   return Center(child: Text("Click on Button For Api Call"));
-          // }
-
-          // if (state is ApiLoading) {
-          //   return const CircularProgressIndicator();
-          // }
+          if (state is ApiLoading) {
+            return Center(child: const CircularProgressIndicator());
+          }
 
           if (state is ApiLoaded) {
             Welcome model = state.data;
@@ -61,7 +58,7 @@ class _AppState extends State<App> {
           if (state is ApiError) {
             return Text(state.message);
           }
-          return const Text("Something wrong");
+          return Center(child: CircularProgressIndicator());
         },
       ),
     );
